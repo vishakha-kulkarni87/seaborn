@@ -1,0 +1,47 @@
+Seaborn is a statistical data visualization library in Python.
+It is built on top of:
+Matplotlib
+Works very well with Pandas
+
+
+Advantages of Seaborn:
+Beautiful graphs
+Less code
+Built-in datasets
+Easy statistical visualization
+
+
+Seaborn already provides sample datasets for practice.
+Example datasets:
+
+tips
+iris
+titanic
+flights
+
+
+import seaborn as sns
+data = sns.load_dataset("tips")
+print(data.head())
+
+
+
+import matplotlib.pyplot as plt
+sns.scatterplot(x="total_bill", y="tip", data=data)
+plt.show()
+
+
+
+sns.scatterplot(x="total_bill", y="tip", hue="sex", data=data)
+plt.show()
+
+
+sns.histplot(data["total_bill"])
+plt.show()
+
+
+sns.countplot(x="day", data=data)
+plt.show()
+
+
+print(data["day"].unique())
