@@ -1,0 +1,37 @@
+import seaborn as sns
+import matplotlib.pyplot as plt
+data  =  sns.load_dataset("tips")
+
+print(data.head())
+
+sns.barplot(x = "day",y = "total_bill",data = data)
+
+
+
+
+
+
+sns.boxplot(x="day",y="total_bill",data=data)
+plt.title("day vs bill")
+plt.xlabel("Days")
+plt.ylabel("Total_Bill")
+
+
+
+flight = sns.load_dataset("flights")
+print(flight.head())
+sns.lineplot(x="year", y="passengers", data=flight)
+
+
+
+
+sns.scatterplot(x="size", y="total_bill", data=data)
+plt.show()
+
+
+
+
+with palette
+=================
+sns.countplot(x="day", data=data, palette="Set2")
+plt.show()
