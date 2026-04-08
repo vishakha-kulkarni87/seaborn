@@ -1,0 +1,134 @@
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+data  = sns.load_dataset("iris")
+
+print(data)
+
+
+for i in data.columns:
+    print(i)
+
+print(data["species"].unique())
+
+print(data["species"].value_counts())
+
+
+
+
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+df = sns.load_dataset("iris")
+
+sns.pairplot(df)
+plt.show()
+
+
+
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+df = sns.load_dataset("iris")
+
+sns.pairplot(df,diag_kind="kde")
+plt.show()
+diag_kind can be: kde,hist(by default)
+
+
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+df = sns.load_dataset("iris")
+
+sns.pairplot(df,diag_kind="kde",hue="species")
+plt.show()
+
+
+
+
+
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+plt.figure(figsize=(16,16))
+df = sns.load_dataset("iris")
+
+sns.pairplot(df,diag_kind="kde",hue="species",markers=["s","o","d"])
+plt.show()
+markers value can be: ^,v,*
+
+
+
+
+violinplot
+=============
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+df = sns.load_dataset("iris")
+
+sns.violinplot(data=df, x="species", y="sepal_length")
+plt.show()
+
+
+
+sns.violinplot(data=df, x="species", y="sepal_length", inner="quartile")
+
+Options:
+
+"box" → mini boxplot
+"quartile" → lines for Q1, median, Q3
+"point" → points
+None → nothing inside
+
+
+sns.violinplot(data=df, x="species", y="sepal_length", hue="species")
+
+
+catplot
+===========
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+df = sns.load_dataset("iris")
+
+sns.catplot(data=df, x="species", y="sepal_length", kind="box")
+plt.show()
+
+
+
+
+Most Important Parameter → kind
+This decides which plot you want
+box
+violin
+bar
+strip
+swarm
+
+
+sns.catplot(data=df, x="species", y="sepal_length", kind="violin")
+sns.catplot(data=df, x="species", y="sepal_length", kind="bar")
+
+sns.catplot(
+    data=df,
+    x="species",
+    y="sepal_length",
+    kind="box",
+    col="species"
+)
+
+sns.catplot(
+    data=df,
+    x="species",
+    y="sepal_length",
+    kind="box",
+    row="species"
+)
