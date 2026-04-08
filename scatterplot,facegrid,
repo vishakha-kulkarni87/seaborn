@@ -1,0 +1,131 @@
+regplot (Regression Plot)
+
+regplot shows the relationship between two variables using:
+Scatter plot (data points)
+Regression line (trend line)
+=======================================================
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+df = sns.load_dataset("iris")
+df.head()
+-------------------------------------------
+sns.regplot(x="petal_length", y="petal_width", data=df)
+
+plt.show()
+-----------------------------------------------------------
+sns.regplot(x="petal_length", y="petal_width", data=df, ci=100)
+--------------------------------------------------------------------
+
+sns.regplot(x="petal_length", y="petal_width", data=df, ci=None)
+------------------------------------------------------------------
+sns.regplot(x="petal_length", y="petal_width", data=df, order=7)
+---------------------------------------------------------------------
+sns.regplot(
+    x="petal_length",
+    y="petal_width",
+    data=df,
+    scatter_kws={"s": 50},   # size of dots
+    line_kws={"color": "red"}
+)
+
+plt.show()
+-----------------------------------
+
+
+
+
+PairGrid in Seaborn
+PairGrid is a more powerful and customizable version of pairplot.
+
+Control what to plot in upper, lower, and diagonal parts
+Use different plots in different sections
+Fully customize visualization
+
+👉 pairplot = ready-made
+👉 PairGrid = build your own version
+
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+df = sns.load_dataset("iris")
+df.head()
+------------------------------------
+g = sns.PairGrid(df)
+g.map(sns.scatterplot)
+
+plt.show()
+--------------------------------------
+g = sns.PairGrid(df)
+g.map_diag(sns.histplot)     # diagonal
+g.map_offdiag(sns.scatterplot)
+
+plt.show()
+-------------------------------------------
+g = sns.PairGrid(df)
+
+g.map_upper(sns.scatterplot)   # upper triangle
+g.map_lower(sns.kdeplot)       # lower triangle
+g.map_diag(sns.kdeplot)       # diagonal
+
+plt.show()
+-------------------------------------------------
+g = sns.PairGrid(df, hue="species")
+
+g.map_upper(sns.scatterplot)
+g.map_lower(sns.kdeplot)
+g.map_diag(sns.kdeplot)
+
+g.add_legend()
+
+plt.show()
+----------------------------------------------------------
+
+
+
+
+FacetGrid (Multiple Plots by Category)
+=============================================
+FacetGrid creates multiple subplots based on categories.
+👉 Think: Split your data into groups and plot each group separately
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+df = sns.load_dataset("iris")
+df.head()
+------------------------------
+
+g = sns.FacetGrid(df, col="species")
+g.map(sns.scatterplot, "sepal_length", "sepal_width")
+
+plt.show()
+---------------------------------------------------------
+g = sns.FacetGrid(df, row="species")
+g.map(sns.scatterplot, "sepal_length", "sepal_width")
+
+plt.show()
+--------------------------------------------------
+g = sns.FacetGrid(df, col="species",hue="species")
+g.map(sns.scatterplot, "sepal_length", "sepal_width")
+
+plt.show()
+--------------------------------------------------------
+g = sns.FacetGrid(df, row="species", col="species")
+g.map(sns.scatterplot, "sepal_length", "sepal_width")
+
+plt.show()
+--------------------------------------------------------
+g = sns.FacetGrid(df, col="species")
+g.map(sns.histplot, "petal_length")
+
+plt.show()
+-------------------------------------------------------
+g = sns.FacetGrid(df, col="species", hue="species")
+g.map(sns.scatterplot, "sepal_length", "sepal_width")
+
+g.add_legend()
+
+plt.show()
