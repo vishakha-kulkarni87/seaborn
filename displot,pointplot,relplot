@@ -1,0 +1,32 @@
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+data = sns.load_dataset("tips")
+
+sns.displot(data=data, x="total_bill", kde=True,hue="sex")
+plt.show()
+
+sns.stripplot(x="day", y="total_bill", data=data,hue="sex")
+plt.show()
+
+sns.swarmplot(x="day", y="total_bill", data=data,hue="sex")
+plt.show()
+
+sns.boxenplot(x="day", y="total_bill", data=data)
+plt.show()
+
+
+sns.pointplot(x="day", y="total_bill", data=data,hue="sex")
+plt.show()
+
+sns.relplot(x="total_bill", y="tip", data=data, kind="scatter",hue="sex")
+plt.show()
+
+
+sns.lmplot(x="total_bill", y="tip", data=data,hue="sex")
+plt.show()
+
+
+sns.residplot(x="total_bill", y="tip", data=data)
+plt.show()
