@@ -1,0 +1,44 @@
+
+import pandas as pd
+
+df = pd.read_csv('data.csv')
+df.head()
+
+
+
+
+data = sns.load_dataset("tips")
+sns.rugplot(x="tip",data=data)
+
+
+
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Example dataset
+data = sns.load_dataset("tips")
+
+# KDE plot
+sns.kdeplot(x="total_bill", data=data, fill=True, color="skyblue")
+
+# Rug plot (color change)
+sns.rugplot(x="total_bill", data=data, color="red", height=0.05)
+
+plt.title("KDE + Rug Plot")
+plt.show()
+
+
+sns.jointplot(
+    x="total_bill",
+    y="tip",
+    data=data,
+    kind="reg",
+    color="purple",
+    height=6
+)
+
+
+sns.jointplot(x="total_bill", y="tip", data=data, kind="scatter")
+
+sns.jointplot(x="total_bill", y="tip", data=data, kind="hex")
