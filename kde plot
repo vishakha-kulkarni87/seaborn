@@ -1,0 +1,164 @@
+📈 KDE Plot (Kernel Density Estimation)
+
+KDE helps visualize the distribution of data smoothly.
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+df = sns.load_dataset("tips")
+sns.kdeplot(data=df, x="total_bill")
+plt.show()
+
+
+
+
+with fill parameter
+sns.kdeplot(data=df, x="total_bill", fill=True)
+
+
+
+with hue
+sns.kdeplot(data=df, x="total_bill", hue="sex", fill=True)
+
+
+with histplot
+sns.histplot(data=df, x="total_bill", kde=True)
+
+
+
+with bandwith
+sns.kdeplot(data=df, x="total_bill", bw_adjust=0.5)  
+
+sns.kdeplot(data=df, x="total_bill", bw_adjust=2) 
+
+
+
+
+
+
+
+
+| Palette Type    | Example Palettes                                    |
+| --------------- | --------------------------------------------------- |
+| **Categorical** | deep, muted, pastel, Set1, Set2, Paired, colorblind |
+| **Sequential**  | Blues, BuGn, YlGnBu, YlOrRd, Oranges                |
+| **Diverging**   | coolwarm, RdBu, Spectral, PiYG, BrBG                |
+| **Cubehelix**   | cubehelix (with variations: dark, light)            |
+| **Custom**      | Hex, RGB colors, predefined names (red, blue)       |
+| **Colorblind**  | colorblind, muted (also colorblind-friendly)        |
+
+
+Categorical Palettes: Used when you have distinct groups (e.g., male/female, day of the week).
+
+Sequential Palettes: Used for ordered or continuous data (e.g., age, salary).
+
+Diverging Palettes: Perfect when your data has a midpoint (e.g., change from positive to negative).
+
+Cubehelix: A monochromatic palette that’s colorblind-friendly, perfect for grayscale plots.
+
+
+
+
+
+1. What is Aesthetic in Seaborn?
+In Seaborn, aesthetic refers to the overall appearance of your plot:
+
+
+Grid lines
+
+Font size and type
+
+Color schemes
+
+Background color
+
+Label positioning
+
+
+
+2. Themes in Seaborn
+What are Themes?
+Themes define the overall look (background, gridlines, etc.) of your plot.
+Seaborn has built-in themes to help you quickly choose an appealing visual style.
+
+
+
+Common Themes in Seaborn:
+=====================================
+darkgrid: Dark background with gridlines (default).
+
+whitegrid: White background with gridlines.
+
+dark: Dark background with no gridlines.
+
+white: Plain white background, no gridlines.
+
+ticks: White background with ticks along the axis.
+
+
+
+
+
+Context in Seaborn
+What is Context?
+Context changes the scale of elements in the plot based on the environment (e.g., paper, presentation, or a webpage).
+It adjusts the size of labels, titles, and lines to fit the context.
+
+
+Common Contexts in Seaborn:
+
+paper: Small elements for use in printed papers (default size).
+
+notebook: Medium elements, perfect for Jupyter notebooks.
+
+talk: Larger elements, useful for presentations.
+
+poster: Largest elements, ideal for posters or large prints.
+
+| Aesthetic Type | Options                                |
+| -------------- | -------------------------------------- |
+| **Theme**      | darkgrid, whitegrid, ticks, white      |
+| **Context**    | paper, notebook, talk, poster          |
+| **Palette**    | deep, muted, pastel, Set1, Blues, etc. |
+| **Font Scale** | 1.0 (default), 1.5 (larger)            |
+| **Gridlines**  | True/False (toggle visibility)         |
+| **Grid Style** | linestyle (dashed/solid), color        |
+
+
+
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Load Seaborn's built-in 'tips' dataset
+df = sns.load_dataset("tips")
+
+# Apply all aesthetic parameters in a single plot
+sns.set_theme(
+    style="whitegrid",           # Background with gridlines
+    context="talk",              # Larger plot elements for presentations
+    palette="pastel",            # Pastel color palette
+    font_scale=1.5,              # Increase font size for better readability
+    rc={
+        "grid.color": "gray",    # Set gridline color to gray
+        "grid.linestyle": "solid",  # Set gridlines to dashed style
+        "grid.linewidth": 0.7,   # Set gridline thickness
+        "axes.titlesize": 18,    # Larger title font size
+        "axes.labelsize": 14,    # Larger label font size
+        "xtick.direction": "in", # Inward ticks on x-axis
+        "ytick.direction": "in"  # Inward ticks on y-axis
+    }
+)
+
+# Create the plot
+plt.figure(figsize=(10, 6))
+sns.countplot(x="day", data=df)
+
+# Set a custom title
+plt.title("Count of Customers by Day", fontsize=18)
+
+# Show the plot
+plt.show()
+
+# Show the plot
+plt.title("Countplot of Days", fontsize=18)
+plt.show()
